@@ -1,0 +1,8 @@
+
+// check if integer is in the array
+
+int member(int element, int a[], int na)
+{
+  if( na == 0 ) return 0;
+  if( a[na-1] == element ) return 1; return member(element, a, na-1);
+}
