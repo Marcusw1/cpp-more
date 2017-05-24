@@ -2,7 +2,10 @@
 
 c++ programs
 
-directory contains: max sequence array , reduce , & system of equations
+This directory contains: max sequence array , reduce , & system of equations
+
+
+
 
 max sequence array: determine max seqeunce of digits in array , return number of digits in sequence
 
