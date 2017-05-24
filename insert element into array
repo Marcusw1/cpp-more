@@ -1,0 +1,12 @@
+void insert(int a[], int &n, int elem)
+{
+    int i = n-1;
+    while(i >= 0 && a[i] > elem)
+    {
+        a[i+1] = a[i];
+        i--;
+    }
+    
+    a[i+1] = elem;
+    n++;
+}
