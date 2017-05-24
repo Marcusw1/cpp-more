@@ -1,0 +1,47 @@
+
+
+void y(double x1, double y1, double x2, double y2, double x3, double y3, double X)
+{
+  
+    //setup matrix 
+     double a11 = x1*x1,  a12 = x1,  a13 = 1; 
+     double a21 = x2*x2,  a22 = x2,  a23 = 1;
+     double a31 = x3*x3,  a32 = x3,  a33 = 1;
+   
+     
+    
+     //determinant, of column a b and c 
+     double D = ((a11 * (a22 * a33 - a32 * a23)) - (a12* (a33 * a21 - a31 * a23)) + (a13 *(a21 * a32 - a31 * a22)));
+     
+     //determinant, replace 1st column with y
+     a11 = y1; a21 = y2; a31 = y3;
+     double Dx = ((a11 * (a22 * a33 - a32 * a23)) - (a12* (a33 * a21 - a31 * a23)) + (a13 *(a21 * a32 - a31 * a22)));
+     
+     
+     //determinant, replace 2nd column with y
+     a11 = x1*x1; a21 = x2*x2; a31 = x3*x3;
+     a12 = y1; a22 = y2; a32 = y3;
+     double Dy = ((a11 * (a22 * a33 - a32 * a23)) - (a12* (a33 * a21 - a31 * a23)) + (a13 *(a21 * a32 - a31 * a22)));
+     
+     //determinant, replace 3rd column with y
+     a12 = x1; a22 = x2; a32 = x3;
+     a13 = y1; a23 = y2; a33 = y3;
+     double Dz = ((a11 * (a22 * a33 - a32 * a23)) - (a12* (a33 * a21 - a31 * a23)) + (a13 *(a21 * a32 - a31 * a22)));
+     
+     //calculate a,b,c;
+     double a = Dx/D;
+     double b = Dy/D;
+     double c = Dz/D;
+     
+     //equidistant = 40
+     X = 40;
+     double offset = (x3 - x1) / (X-1);
+     double start;
+     
+      for(start = x1; start < x3; start += offset){
+        double y_corr = a * (start * start) + b * (start) + c;
+      //  cout << "("<< start << " , " << setprecision(3) << y_corr << ")" << endl;
+    }
+     
+     
+}
