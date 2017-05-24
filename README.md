@@ -3,7 +3,7 @@
 c++ programs
 
 This directory contains: max sequence array , reduce , & system of equations
-
+.
 
 
 
