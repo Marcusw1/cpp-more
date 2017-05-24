@@ -1,0 +1,5 @@
+void int_to_array(int k, int n, int a[])
+{  
+    if(k/10 > 0)  integerToArray_Rec(k/10,n-1,a);        
+    a[n-1] =k%10;
+}
