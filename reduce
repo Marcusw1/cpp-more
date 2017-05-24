@@ -1,0 +1,113 @@
+
+
+
+void reduce(int a[], int &n)
+{
+    
+    //if theres only three values
+    if(n == 3){cout << "ERROR :: size must be greater than 'N' " <<endl;}
+    
+    
+    
+    
+    
+    int temp=0;
+    
+  //ENDING index of a[low,medium,high] elements
+  // index that holds the highest, mid, and lowest
+    int h_end = n-1;     
+    int m_end = h_end-1; 
+    int l_end = m_end-1; 
+    
+  // count of 3 highest value duplicates
+  // duplicate is the number of copies ( excluding the value )
+    int h_dup = 0;
+    int m_dup = 0;
+    int l_dup = 0;
+    
+  //total duplicates, t_dup will update size of array
+    int t_dup = 0;
+    
+    
+    for(int i =0; i<(n-t_dup); i++)
+    {
+      
+       
+        
+    //for each index a[i] , keep checking if it is in the proper place
+      while(a[i] >= a[h_end] || a[i] >= a[m_end] || a[i] >= a[l_end])
+      {
+        
+        //high
+        if(a[i] > a[h_end]) //case 1: a[i] is the new greatest
+        {
+          h_end = n-1;
+          m_end = h_end-1;
+          h_dup = 0;
+          
+          temp = a[i];
+          a[i] = a[h_end];
+          a[h_end] = temp;
+        }
+        else if(a[i] == a[h_end]) //case 2: a[i] is == to greatest
+        {   
+          h_dup++;
+          temp = a[i];
+          a[i] = a[h_end-h_dup];
+          a[h_end-h_dup] = temp;
+          
+          m_end = (((h_end)-(h_dup))-1);
+        }
+      
+      
+        //mid
+        else if(a[i] > a[m_end]) //case 1: a[i] is the new mid 
+        {
+          m_end = ((h_end-h_dup)-1);
+          l_end = m_end-1;
+          m_dup=0;
+          
+          temp = a[i];
+          a[i] = a[m_end];
+          a[m_end] = temp;
+        }
+        else if(a[i] == a[m_end]) //case 2: a[i] is == to the mid
+        {
+          m_dup++;
+          temp = a[i];
+          a[i] = a[m_end-m_dup];
+          a[m_end-m_dup] = temp;
+          if(l_dup > 1) --l_dup;
+          
+          l_end = (((m_end)-(m_dup))-1);
+        }
+      
+        
+        
+       //low
+        else if(a[i] > a[l_end]) // case 1: a[i] is the new low
+        {
+          l_end = ((m_end-m_dup)-1);
+          l_dup = 0;
+          
+          temp = a[i];
+          a[i] = a[l_end];
+          a[l_end] = temp;
+        }
+        else if(a[i] == a[l_end]) // case2: a[i] is == to the low
+        {
+          l_dup++;
+          temp = a[i];
+          a[i] = a[l_end-l_dup];
+          a[l_end-l_dup] = temp;
+        } 
+     
+      }
+      
+
+      t_dup = 3+h_dup + m_dup + l_dup; //update t_dup
+    }
+
+    n = n - t_dup; //update size of array 
+    return;
+}
