@@ -1,8 +1,9 @@
 # cpp-more
 
-c++ programs
+c++ programs , mostly array operations
 
 This directory contains: max sequence array , reduce , & system of equations
+
 
 .
 
